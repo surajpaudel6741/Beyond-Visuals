@@ -1,0 +1,108 @@
+.clientsSection {
+  background-color: #f4f4f4;
+  padding: 4rem 0;
+  text-align: center;
+}
+
+.clientsTitle {
+  font-size: 3rem;
+  color: #333333;
+  margin-bottom: 3rem;
+}
+
+.clientsGrid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2rem; /* Evenly spaced gaps between client cards */
+}
+
+.clientCard {
+  position: relative;
+  width: 120px; /* Smaller size for client cards */
+  height: 120px; /* Square-shaped cards */
+  border-radius: 15px; /* Rounded corners */
+  overflow: hidden;
+  background-color: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.clientCard:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.clientLogo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 60%;
+  height: 60%;
+  object-fit: contain;
+  filter: grayscale(100%);
+  transition: filter 0.3s ease, transform 0.3s ease;
+}
+
+.clientLogo:hover {
+  filter: none;
+}
+
+.popUp {
+  position: absolute;
+  z-index: 1000;
+  width: 320px; /* Fixed width for iframe */
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: opacity 0.3s ease;
+}
+
+.popUpContent {
+  padding: 1rem;
+  background-color: #333333;
+  color: #fff;
+}
+
+.popUpTitle {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.videoIframe {
+  width: 100%;
+  height: 180px;
+}
+
+.position-0 {
+  bottom: 140%; /* Adjusted position for new smaller card size */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.position-1 {
+  top: 140%; /* Adjusted position for new smaller card size */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.position-2 {
+  bottom: 140%; /* Adjusted position for new smaller card size */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .popUp {
+    width: 100%;
+    height: auto;
+  }
+
+  .videoIframe {
+    height: 200px;
+  }
+}
