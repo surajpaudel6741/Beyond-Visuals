@@ -13,37 +13,27 @@ import styles from './TestimonialSection.module.css';
 const testimonialList = [
 	{
 		author: {
-			fullName: "Akshay Kumar",
+			fullName: "Loshan Parajuli",
 			picture:
 				"https://cdn.easyfrontend.com/pictures/testimonial/testimonial_15.png",
-			designation: "Founder / CEO",
-		},
-		rating: 3.5,
-		description:
-			"It’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for you.It’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for youIt’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for you!",
-	},
-	{
-		author: {
-			fullName: "Raima Sen",
-			picture:
-				"https://cdn.easyfrontend.com/pictures/testimonial/testimonial_15.png",
-			designation: "Founder / CEO",
-		},
-		rating: 4,
-		description:
-			"It’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for you.It’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for youIt’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for you!",
-	},
-	{
-		author: {
-			fullName: "Arjun Kapur",
-			picture:
-				"https://cdn.easyfrontend.com/pictures/testimonial/testimonial_15.png",
-			designation: "Founder / CEO",
+			designation: "Content Creator at whylosh",
 		},
 		rating: 5,
 		description:
-			"It’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for you.It’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for youIt’s easier to reach your savings goals when you have the right savings account. Take a look and find the right one for you!",
+			"Suraj always brings a level of professionalism and expertise that is truly impressive.He knows his core and readily mentors our incubee as well, such a sweet guy.",
 	},
+	{
+		author: {
+			fullName: "Sudarshan Vai Subedi",
+			picture:
+				"https://cdn.easyfrontend.com/pictures/testimonial/testimonial_15.png",
+			designation: "IDS Media Network",
+		},
+		rating: 5,
+		description:
+			"Thank You for bringing our ideas to Life! Your hardwork and creativity has been a vital part for our channel. Anyone looking for creative designing and editing can contact him.",
+	},
+	
 ];
 
 const Rating = ({ rating, showLabel, className, ...rest }) => (
