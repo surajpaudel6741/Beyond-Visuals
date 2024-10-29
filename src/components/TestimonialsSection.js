@@ -1,98 +1,67 @@
-import React, { Fragment, useState } from "react";
-import { Button, Carousel, Col, Container, Row } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faChevronLeft,
-  faChevronRight,
-  faStar,
-  faStarHalfAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
+import { Carousel, Col, Container, Row } from "react-bootstrap";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import PropTypes from "prop-types";
-import styles from './TestimonialSection.module.css';
 
 const testimonialList = [
-	{
-		author: {
-			fullName: "Loshan Parajuli",
-			picture:
-				"https://cdn.easyfrontend.com/pictures/testimonial/testimonial_15.png",
-			designation: "Content Creator at whylosh",
-		},
-		rating: 5,
-		description:
-			"Suraj always brings a level of professionalism and expertise that is truly impressive.He knows his core and readily mentors our incubee as well, such a sweet guy.",
-	},
-	{
-		author: {
-			fullName: "Sudarshan Vai Subedi",
-			picture:
-				"https://cdn.easyfrontend.com/pictures/testimonial/testimonial_15.png",
-			designation: "IDS Media Network",
-		},
-		rating: 5,
-		description:
-			"Thank You for bringing our ideas to Life! Your hardwork and creativity has been a vital part for our channel. Anyone looking for creative designing and editing can contact him.",
-	},
-	
+  {
+    author: {
+      fullName: "Loshan Parajuli",
+      picture: "/images/LoshanParajuli.png",
+      designation: "Content Creator at whylosh",
+    },
+    description:
+      "Suraj always brings a level of professionalism and expertise that is truly impressive. He knows his core and readily mentors our incubee as well, such a sweet guy.",
+  },
+  {
+    author: {
+      fullName: "Sudarshan Vai Subedi",
+      picture: "/images/SudarshanVaiSubedi.jpg",
+      designation: "IDS Media Network",
+    },
+    description:
+      "Thank You for bringing our ideas to Life! Your hardwork and creativity has been a vital part for our channel. Anyone looking for creative designing and editing can contact him.",
+  },
+  {
+    author: {
+      fullName: "Suraj Poudel",
+      picture: "/images/surajpoudel.png",
+      designation: "Branding Professional and Consultant (Fintech Companies)",
+    },
+    description:
+      "First and foremost, Suraj is a very talented video editor. He has a great knack of putting things together in a very creative and imaginative way. Apart from the immense skills that he has, he is also an extremely professional person to work with.",
+  },
 ];
-
-const Rating = ({ rating, showLabel, className, ...rest }) => (
-  <p className={`mb-4 ${styles.rating} ${className || ''}`} {...rest}>
-    <span>
-      {[...Array(5)].map((_, i) => {
-        const index = i + 1;
-        let content = "";
-        if (index <= Math.floor(rating))
-          content = <FontAwesomeIcon icon={faStar} className="me-1 active" />;
-        else if (rating > i && rating < index + 1)
-          content = <FontAwesomeIcon icon={faStarHalfAlt} className="me-1 active" />;
-        else if (index > rating)
-          content = <FontAwesomeIcon icon={faStar} className="me-1" />;
-
-        return <Fragment key={i}>{content}</Fragment>;
-      })}
-    </span>
-    {showLabel && <span>{rating.toFixed(1)}</span>}
-  </p>
-);
-
-Rating.propTypes = {
-	rating: PropTypes.number.isRequired,
-	showLabel: PropTypes.bool,
-	className: PropTypes.string,
-};
-
 const TestimonialItemMedia = ({ testimonial }) => (
-  <img
-    src={testimonial.author.picture}
-    alt={testimonial.author.fullName}
-    className="img-fluid"
-  />
+  
+  <div className="relative w-64 h-64 mx-auto overflow-hidden rounded-3xl group">
+    <div className="absolute inset-0 bg-blue-500 transform transition-transform group-hover:scale-95"></div>
+    <img
+      src={testimonial.author.picture}
+      alt={testimonial.author.fullName}
+      className="absolute inset-0 object-cover w-full h-full transform -translate-x-0 -translate-y-0 transition-transform group-hover:translate-x-0 group-hover:translate-y-0"
+    />
+  </div>
 );
 
 TestimonialItemMedia.propTypes = {
-	testimonial: PropTypes.object.isRequired,
+  testimonial: PropTypes.object.isRequired,
 };
 
 const TestimonialItemContent = ({ testimonial }) => (
-  <Fragment>
-    <Rating rating={testimonial.rating} showLabel={false} />
-    <h4 className="mb-1">{testimonial.author.fullName}</h4>
-    <p className="mb-4">{testimonial.author.designation}</p>
-    <p className="opacity-75 mb-0">{testimonial.description}</p>
-  </Fragment>
+  <div className="text-center md:text-left">
+    <h4 className="text-xl font-bold mb-2">{testimonial.author.fullName}</h4>
+    <p className="text-gray-600 mb-4">{testimonial.author.designation}</p>
+    <p className="text-gray-700">{testimonial.description}</p>
+  </div>
 );
 
 TestimonialItemContent.propTypes = {
-	testimonial: PropTypes.object.isRequired,
+  testimonial: PropTypes.object.isRequired,
 };
 
 const TestimonialList = ({ testimonials }) => {
   const [index, setIndex] = useState(0);
-
-  const handleSelect = (selectedIndex) => {
-    setIndex(selectedIndex);
-  };
 
   const handleControl = (type) => {
     if (type === "prev") {
@@ -103,73 +72,70 @@ const TestimonialList = ({ testimonials }) => {
   };
 
   return (
-    <Row className="justify-content-center">
-      <Col lg={10}>
-        <Row className="align-items-center justify-content-between mt-5">
-          <Col md={5} className="text-center order-lg-2">
-            <div className={styles.imgShape}>
-              <Carousel
-                activeIndex={index}
-                onSelect={handleSelect}
-                controls={false}
-                indicators={false}
-              >
-                {testimonials.map((testimonial, i) => (
-                  <Carousel.Item key={i}>
-                    <TestimonialItemMedia testimonial={testimonial} />
-                  </Carousel.Item>
-                ))}
-              </Carousel>
-            </div>
-          </Col>
-          <Col md={6} className={`${styles.content} text-center text-md-start mt-4 mt-md-0`}>
-            <Carousel
-              activeIndex={index}
-              onSelect={handleSelect}
-              controls={false}
-              indicators={false}
-            >
-              {testimonials.map((testimonial, i) => (
-                <Carousel.Item key={i}>
-                  <TestimonialItemContent testimonial={testimonial} />
-                </Carousel.Item>
-              ))}
-            </Carousel>
+    <div className="max-w-6xl mx-auto px-4">
+      <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+        <div className="w-full md:w-1/2">
+          <Carousel
+            activeIndex={index}
+            onSelect={setIndex}
+            controls={false}
+            indicators={false}
+          >
+            {testimonials.map((testimonial, i) => (
+              <Carousel.Item key={i}>
+                <TestimonialItemMedia testimonial={testimonial} />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+        </div>
 
-            <div className="mt-5">
-              <Button
-                variant=""
-                onClick={() => handleControl("prev")}
-                className={styles.controlPrev}
-              >
-                <FontAwesomeIcon icon={faChevronLeft} />
-              </Button>
-              <Button
-                variant=""
-                onClick={() => handleControl("next")}
-                className={styles.controlNext}
-              >
-                <FontAwesomeIcon icon={faChevronRight} />
-              </Button>
-            </div>
-          </Col>
-        </Row>
-      </Col>
-    </Row>
+        <div className="w-full md:w-1/2">
+          <Carousel
+            activeIndex={index}
+            onSelect={setIndex}
+            controls={false}
+            indicators={false}
+          >
+            {testimonials.map((testimonial, i) => (
+              <Carousel.Item key={i}>
+                <TestimonialItemContent testimonial={testimonial} />
+              </Carousel.Item>
+            ))}
+          </Carousel>
+
+          <div className="flex justify-center md:justify-start gap-4 mt-6">
+            <button
+              onClick={() => handleControl("prev")}
+              className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+            <button
+              onClick={() => handleControl("next")}
+              className="p-2 rounded-full border border-gray-300 hover:bg-gray-100 transition-colors"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
   );
+};
+
+TestimonialList.propTypes = {
+  testimonials: PropTypes.array.isRequired,
 };
 
 const TestimonialSection = () => {
   return (
-    <section className={`${styles.testimonial} ${styles.light}`}>
+    <section className="py-16 md:py-24 bg-white">
       <Container>
-        <Row className="justify-content-center">
-          <Col lg={6} xl={5} className="text-center mb-md-5">
-            <h2 className={`${styles.heading} mb-3`}>
-              Client Testimonials
-            </h2>
-            <p className={`${styles.subHeading} mb-0`}>
-            Delivering unique, flawless designs and visuals with creativity and insight, elevating every project beyond expectations.
+        <Row className="justify-content-center mb-12">
+          <Col lg={6} className="text-center">
+            <h2 className="text-3xl font-bold mb-4">Client Testimonials</h2>
+            <p className="text-gray-600">
+              Delivering unique, flawless designs and visuals with creativity and insight, elevating every project beyond expectations.
             </p>
           </Col>
         </Row>

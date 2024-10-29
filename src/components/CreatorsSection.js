@@ -15,6 +15,12 @@ const creatorsData = [
     instagramUrl: "https://www.instagram.com/yo_gesh.dhungana/",
     linkedinUrl: "https://www.linkedin.com/in/yogesh-dhungana/",
   },
+  {
+    name: "Sudip Bhai Subedi",
+    image: "https://media.licdn.com/dms/image/v2/D4D03AQEcRHG1sjol4w/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1681869430624?e=1735776000&v=beta&t=7ErgjlTkzH46NYCJaI5d5iNR5cqsvFoBNhS8qY7eiy4",
+    instagramUrl: "https://www.instagram.com/sudipbhaisubedi/",
+    linkedinUrl: "https://www.linkedin.com/in/sudipbhai/",
+  },
   // Add more creators as needed
 ];
 

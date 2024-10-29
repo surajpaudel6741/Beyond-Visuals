@@ -1,24 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { FaVideo, FaPhotoVideo, FaBullhorn, FaInstagram } from 'react-icons/fa';
+import { FaVideo, FaPhotoVideo, FaPencilRuler, FaInstagram } from 'react-icons/fa';
 import styles from './Services.module.css';
 
 // Define your services and corresponding icons
 const services = [
   { 
     name: 'Video Editing', 
-    description: 'Professional editing for commercials, short films, and corporate videos.', 
+    description: 'Professional editing for Youtube, short films, and corporate videos.', 
     icon: <FaVideo style={{ color: '#343a40' }} />  // Dark gray color for simplicity
   },
   { 
     name: 'Graphic Design', 
-    description: 'Creating stunning visuals for branding, social media, and marketing.', 
+    description: 'Creating stunning visuals for branding, social media, and Youtube Thumbnails.', 
     icon: <FaPhotoVideo style={{ color: '#343a40' }} /> 
   },
   { 
-    name: 'Branding', 
-    description: 'Building strong and consistent brand identity across all platforms.', 
-    icon: <FaBullhorn style={{ color: '#343a40' }} /> 
+    name: 'Logo Design', 
+    description: 'Crafting impactful logos that define and enhance your brand’s presence.', 
+    icon: <FaPencilRuler style={{ color: '#343a40' }} />
   },
   { 
     name: 'Reels Editing', 

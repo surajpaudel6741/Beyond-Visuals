@@ -18,12 +18,12 @@ const Hero = () => {
 
       {/* Staggered Company Name Animation */}
       <h1 className="text-6xl font-extrabold mb-4 text-gray-900">
-        <AnimatedLetters text="Beyond Visual" />
+        <AnimatedLetters text="Beyond Visuals" />
       </h1>
 
       {/* Staggered Tagline Animation */}
       <p className="text-2xl text-gray-700 mb-8">
-        <AnimatedLetters text="Creative Visual Solutions for Businesses" delay={0.5} />
+        <AnimatedLetters text="More Than Editing—A Creative Partner" delay={0.5} />
       </p>
 
       {/* Animated Button with 3D Hover Effect */}

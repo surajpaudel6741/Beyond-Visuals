@@ -26,7 +26,7 @@ const Contact = () => {
               onMouseEnter={() => setShowEmailTooltip(true)}
               onMouseLeave={() => setShowEmailTooltip(false)}
             >
-              <MdEmail className="mr-2" /> Email Us
+              <MdEmail className="mr-2" /> Email
             </a>
             {showEmailTooltip && (
               <div className="absolute left-1/2 transform -translate-x-1/2 top-full mt-2 bg-white text-black rounded-md shadow-lg p-2 z-10">

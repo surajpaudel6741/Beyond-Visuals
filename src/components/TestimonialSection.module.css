@@ -2,10 +2,9 @@
   --bs-body-color: #212529;
   --bs-body-bg: rgb(255, 255, 255);
   --ezy-theme-color: rgb(13, 110, 253);
-  --ezy-theme-color-rgb: 13, 110, 253;
   --ezy-item-bg: #ffffff;
   --ezy-item-shadow: 0px 4px 44px rgba(159, 190, 218, 0.37);
-  --ezy-rating-rgb: 255, 215, 0;
+  --ezy-rating-color: rgb(255, 215, 0);
   --ezy-control-button-color: 11, 23, 39;
 
   background-color: var(--bs-body-bg);
@@ -17,29 +16,6 @@
   .testimonial {
     padding: 100px 0;
   }
-}
-
-.gray {
-  --bs-body-bg: rgb(246, 246, 246);
-  --ezy-item-bg: #f6f6f6;
-  --ezy-item-shadow: 0px 4px 44px rgba(216, 237, 255, 0.37);
-  --ezy-control-button-color: 11, 22, 33;
-}
-
-.darkGray {
-  --bs-body-color: #ffffff;
-  --bs-body-bg: rgb(30, 39, 53);
-  --ezy-item-bg: #374351;
-  --ezy-item-shadow: none;
-  --ezy-control-button-color: 246, 246, 246;
-}
-
-.dark {
-  --bs-body-color: #ffffff;
-  --bs-body-bg: rgb(11, 23, 39);
-  --ezy-item-bg: #162231;
-  --ezy-item-shadow: none;
-  --ezy-control-button-color: 255, 255, 255;
 }
 
 .heading {
@@ -62,9 +38,30 @@
   color: var(--bs-body-color);
 }
 
+/* Image Wrapper and Sizing Styles */
+.imageWrapper {
+  position: relative;
+  width: 577px;
+  height: 733px;
+  overflow: hidden;
+}
+
+.testimonialImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .imgShape {
   position: relative;
   z-index: 1;
+  width: 577px;
+  height: 733px;
+  margin: 0 auto;
 }
 
 .imgShape::before {
@@ -84,10 +81,41 @@
   transform: translate3d(-7px, -7px, 0);
   transition: transform 0.25s ease-in-out;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.carouselWrapper {
+  width: 100%;
+  height: 100%;
 }
 
 .imgShape:hover .carousel {
   transform: translate3d(0, 0, 0);
+}
+
+@media (max-width: 768px) {
+  .imageWrapper {
+    width: 100%;
+    max-width: 577px;
+    height: 0;
+    padding-bottom: 127%; /* Maintains 577:733 aspect ratio */
+  }
+
+  .imgShape {
+    width: 100%;
+    max-width: 577px;
+    height: 0;
+    padding-bottom: 127%;
+  }
+
+  .testimonialImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
 }
 
 @media (min-width: 768px) {
@@ -118,16 +146,23 @@
   opacity: 1;
 }
 
-.rating :global([class*="fa-"]):not(.active),
-.rating :global([class*="fa-"]):not(.active) * {
-  color: rgba(var(--ezy-rating-rgb), 0.2);
+/* Rating Styles */
+.rating .fa-star,
+.rating .fa-star-half-alt {
+  color: rgba(var(--ezy-rating-color), 1);
 }
 
-.rating :global([class*="fa-"]).active,
-.rating :global([class*="fa-"]).active * {
-  color: rgba(var(--ezy-rating-rgb), 1);
+.rating .fa-star.empty,
+.rating .fa-star-half-alt.empty {
+  color: rgba(var(--ezy-rating-color), 0.2); /* Faded color for empty stars */
 }
 
+.rating .fa-star.full,
+.rating .fa-star-half-alt.full {
+  color: rgba(var(--ezy-rating-color), 1); /* Bright color for full stars */
+}
+
+/* Control Buttons */
 .controlButton {
   width: 42px;
   height: 42px;
@@ -153,4 +188,31 @@
 
 .controlNext {
   composes: controlButton;
+}
+.carousel-inner {
+  overflow: hidden;
+}
+
+/* Fade transition for carousel items */
+.carousel-item {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.carousel-item:not(.active) {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Ensure images maintain aspect ratio */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optional: Add smooth transition for all interactive elements */
+button, 
+.group {
+  transition: all 0.3s ease-in-out;
 }
