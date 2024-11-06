@@ -31,6 +31,24 @@ const testimonialList = [
     description:
       "First and foremost, Suraj is a very talented video editor. He has a great knack of putting things together in a very creative and imaginative way. Apart from the immense skills that he has, he is also an extremely professional person to work with.",
   },
+  {
+    author: {
+      fullName: "Sudip Bhai Subedi",
+      picture: "/images/SudipBhaiSubedi.jpeg",
+      designation: "IN-Depth Story",
+    },
+    description:
+      "Suraj Poudel is an exceptional video editor with a strong grasp of visual storytelling. His technical skill and creative insight consistently elevate InDepthStory’s content. Professional, adaptable, and highly skilled, Suraj is invaluable to our team, making our messages clear and impactful. Highly recommended.",
+  },
+  {
+    author: {
+      fullName: "Yogesh Dhungana",
+      picture: "/images/YogeshDhungana.jpeg",
+      designation: "Researcher, New York University Abu Dhabi",
+    },
+    description:
+      "Suraj is a very talented and helpful person. The most impressive thing I found in Suraj is his humility that extends beyond his professional boundaries to make a real sense of attachment with the client in such a way that he prioritize client-need utmost. His dedication to work with a clear sense of purpose is noteworthy. I would recommend anyone for his help and support in any areas of his expertise.",
+  },
 ];
 const TestimonialItemMedia = ({ testimonial }) => (
   
