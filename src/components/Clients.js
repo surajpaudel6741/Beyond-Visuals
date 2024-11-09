@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import {  ChevronLeft, ChevronRight } from "lucide-react";
-
+import { FaYoutube } from 'react-icons/fa';
 // Extended client data with work details
 const clientsData = [
   {
@@ -38,7 +38,7 @@ const clientsData = [
   {
     name: "Misguided Nepal",
     logo: "https://yt3.googleusercontent.com/HJJdRr6SfWvfq9O3ssZhxCYf5JGbO_z04VuP4sOQaaWHDfSd-Zn1CNB3XO1xdwuJOtJgDzjJaA=s160-c-k-c0x00ffffff-no-rj",
-    channelUrl: "https://www.youtube.com/embed/UC4WTbb5TRyn8SNC3sz9ubNA",
+    channelUrl: "https://www.youtube.com/@MisguidedNepal",
     work: [
       {
         type: "Video Editing",
@@ -50,7 +50,7 @@ const clientsData = [
   {
     name: "Project Kura",
     logo: "https://yt3.googleusercontent.com/U9nmDq8o6R4pHH8kePnQChham-_59Nc4AP-_ig86TebeYNbOOmupn4M085ukWVxWyKmminh-=s160-c-k-c0x00ffffff-no-rj",
-    channelUrl: "https://www.youtube.com/embed/UCaLmgjsWtq_t1pCh7pGoMiA",
+    channelUrl: "https://www.youtube.com/@ProjectKura",
     work: [
       {
         type: "Thumbnail",
@@ -62,7 +62,7 @@ const clientsData = [
   {
     name: "IDS Media",
     logo: "https://yt3.googleusercontent.com/ngbhc8oe0vYwVaIrfYcTkdx-4IzC_N-S20vT9jc6M0DJ6KqN8MZvdTyC4I6Vk9vDeTLJv2rq=s160-c-k-c0x00ffffff-no-rj",
-    channelUrl: "https://www.youtube.com/embed/UC4WTbb5TRyn8SNC3sz9ubNA",
+    channelUrl: "https://www.youtube.com/@IDSMediaNetwork",
     work: [
       {
         type: "Thumbnail",
@@ -217,27 +217,48 @@ const ClientCard = ({ client, index }) => {
     }, 300);
   };
 
+  const openYouTubeChannel = () => {
+    if (client.channelUrl) {
+      window.open(client.channelUrl, '_blank', 'noopener,noreferrer');
+    }
+  };
+
   return (
     <div
-      className="relative bg-white p-2 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 w-40"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-    >
-      <img
-        src={client.logo}
-        alt={client.name}
-        className="w-full h-16 object-contain mb-2"
-      />
-      <h6 className=" text-md text-center">{client.name}</h6>
+    className="relative bg-white p-2 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 w-40"
+    onMouseEnter={handleMouseEnter}
+    onMouseLeave={handleMouseLeave}
+  >
+    <img
+      src={client.logo}
+      alt={client.name}
+      className="w-full h-16 object-contain mb-2"
+    />
+    <h6 className="text-md text-center">{client.name}</h6>
 
-      <WorkPopup
-        work={client.work}
-        position="top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-2"
-        isVisible={isHovered}
-      />
-    </div>
+    {/* Centered YouTube Icon below the name */}
+    {client.channelUrl && (
+      <div className="flex justify-center mt-2">
+        <button
+          onClick={openYouTubeChannel}
+          className="text-red-500 hover:text-red-700 transition-colors"
+          aria-label="YouTube Channel"
+        >
+          <FaYoutube className="w-6 h-6" /> {/* Increase icon size */}
+        </button>
+      </div>
+    )}
+
+    <WorkPopup
+      work={client.work}
+      position="top-0 left-1/2 transform -translate-x-1/2 -translate-y-full mb-2"
+      isVisible={isHovered}
+    />
+  </div>
   );
 };
+
+
 
 
 // ClientsSection component
